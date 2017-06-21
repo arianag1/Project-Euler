@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+
+public class ProjectEuler#3 {
+     
+    static boolean isPrime(long n){
+        if(n == 2)return true;
+        else if(n%2 == 0) return false;
+        for(int i = 3; i < n; i+=3)
+            if(n%i == 0)
+                return false;
+        return true;
+    }
+    static long primeFact(long n){
+        int max = 0,i = 2;
+        while(i <= n){
+            while(isPrime(i) == true && n%i == 0){
+                n = n/i;
+                max = i;
+            }
+          i++; 
+        }
+        return max;
+    }
+        
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int k = 0; k < t; k++){
+            long n = in.nextLong();
+            System.out.println(primeFact(n));
+        }
+    }
+}
